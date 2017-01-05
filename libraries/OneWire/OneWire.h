@@ -61,7 +61,11 @@
 #define DIRECT_WRITE_LOW(base, mask)    ((*((base)+2)) &= ~(mask))
 #define DIRECT_WRITE_HIGH(base, mask)   ((*((base)+2)) |= (mask))
 
+<<<<<<< HEAD
 #elif defined(__MK20DX128__) || defined(__MK20DX256__)
+=======
+#elif defined(__MK20DX128__)
+>>>>>>> e3076ff502ff70a534a8969a50be7c128dfbf7a9
 #define PIN_TO_BASEREG(pin)             (portOutputRegister(pin))
 #define PIN_TO_BITMASK(pin)             (1)
 #define IO_REG_TYPE uint8_t
@@ -72,6 +76,7 @@
 #define DIRECT_WRITE_LOW(base, mask)    (*((base)+256) = 1)
 #define DIRECT_WRITE_HIGH(base, mask)   (*((base)+128) = 1)
 
+<<<<<<< HEAD
 #elif defined(__MKL26Z64__)
 #define PIN_TO_BASEREG(pin)             (portOutputRegister(pin))
 #define PIN_TO_BITMASK(pin)             (digitalPinToBitMask(pin))
@@ -83,6 +88,8 @@
 #define DIRECT_WRITE_LOW(base, mask)    (*((base)+8) = (mask))
 #define DIRECT_WRITE_HIGH(base, mask)   (*((base)+4) = (mask))
 
+=======
+>>>>>>> e3076ff502ff70a534a8969a50be7c128dfbf7a9
 #elif defined(__SAM3X8E__)
 // Arduino 1.5.1 may have a bug in delayMicroseconds() on Arduino Due.
 // http://arduino.cc/forum/index.php/topic,141030.msg1076268.html#msg1076268
@@ -115,6 +122,7 @@
 #define DIRECT_WRITE_LOW(base, mask)    ((*(base+8+1)) = (mask))          //LATXCLR  + 0x24
 #define DIRECT_WRITE_HIGH(base, mask)   ((*(base+8+2)) = (mask))          //LATXSET + 0x28
 
+<<<<<<< HEAD
 #elif defined(ARDUINO_ARCH_ESP8266)
 #define PIN_TO_BASEREG(pin)             ((volatile uint32_t*) GPO)
 #define PIN_TO_BITMASK(pin)             (1 << pin)
@@ -149,6 +157,10 @@
 #define DIRECT_MODE_OUTPUT(base, pin)   pinMode(pin,OUTPUT)
 #warning "OneWire. Fallback mode. Using API calls for pinMode,digitalRead and digitalWrite. Operation of this library is not guaranteed on this architecture."
 
+=======
+#else
+#error "Please define I/O register types here"
+>>>>>>> e3076ff502ff70a534a8969a50be7c128dfbf7a9
 #endif
 
 
@@ -221,7 +233,11 @@ class OneWire
     // might be a good idea to check the CRC to make sure you didn't
     // get garbage.  The order is deterministic. You will always get
     // the same devices in the same order.
+<<<<<<< HEAD
     uint8_t search(uint8_t *newAddr, bool search_mode = true);
+=======
+    uint8_t search(uint8_t *newAddr);
+>>>>>>> e3076ff502ff70a534a8969a50be7c128dfbf7a9
 #endif
 
 #if ONEWIRE_CRC
