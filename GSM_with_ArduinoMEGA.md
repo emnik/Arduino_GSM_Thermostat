@@ -1,4 +1,4 @@
-HOW TO USE THE GSM & GPS SHIELD WITH ARDUINO MEGA
+##HOW TO USE THE GSM & GPS SHIELD WITH ARDUINO MEGA
 
 For problems with the RAM, or simply for projects that require a larger number of input/output, we can use with the GSM/GPRS & GPS shield the Arduino Mega.  Thanks to four serial port, we can use one of these instead of the serial software to communicate with the shield.
 
@@ -7,7 +7,7 @@ With the latest release, the library can be used completely with Arduino Mega. Y
 Using the shield with Arduino Mega we comment as follows:
 
  
-
+```
 //#define UNO
 
 #define MEGA
@@ -17,15 +17,15 @@ If we want to use Arduino UNO:
 #define UNO
 
 //#define MEGA
-
+```
  
 
 Similarly, also the file HWSerial.h, must be configured. As before, we see the first example for Arduino Mega:
 
  
-
+```
 #define MEGA
-
+```
  
 
 Using the file HWSerial.h is not necessary to define the possible use with Arduino Uno, as implemented in the class it is only used by the hardware serial.
@@ -38,7 +38,9 @@ To make the “bridge” I remove the 2 jumbers from the TX / RX triplets on the
 
 
 *** Also in HWSerial.cpp change line 55 (or 63) to:
+```
 const char PROGMEM *p = (const char PROGMEM *)ifsh;
+```
 
 otherwise the sketch won’t compile with the latest Arduino versions!http://forum.arduino.cc/index.php?topic=307728.0
 
